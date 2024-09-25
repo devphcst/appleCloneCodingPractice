@@ -5,9 +5,11 @@ body {
 
   /* 단어 단위로 줄바꿈 처리시키기 */
   word-break: keep-all;
+  color: #1d1d1d;
 }
 
 a {
+  color: #1d1d1d;
   text-decoration: none;
 }
 
@@ -17,6 +19,7 @@ header {
 }
 
 header .inner {
+  position: relative;
   max-width: 1020px;
   margin: 0 auto;
 }
@@ -79,11 +82,16 @@ header .basket {
   position: absolute;
   top: calc(100% + 4px);
   right: -6px;
-  display: none;
+  /* display: none; */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 500ms;
 }
 
 header .basket.show {
-  display: block;
+  /* display: block; */
+  opacity: 1;
+  visibility: visible;
 }
 
 header .basket .arrow {
@@ -132,4 +140,121 @@ header .basket ul li a {
 
 header .basket ul li a:hover {
   text-decoration: underline;
+}
+
+/* Header / Search */
+header .search-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+
+header .search {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+header .search .shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+header .search .textfield {
+  position: relative;
+}
+
+header .search input {
+  width: 100%;
+  height: 44px;
+  padding: 0 40px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-size: 17px;
+  color: #fff;
+}
+
+header .search .search-icon {
+  width: 40px;
+  height: 44px;
+  background-image: url('../assets/images/header_search.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+}
+
+header .search .search-closer {
+  width: 40px;
+  height: 44px;
+  background-image: url('../assets/images/header_close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+header .search .search-closer:hover {
+  opacity: 1;
+}
+
+header .search .autocompletes {
+  width: 100%;
+  padding: 26px 40px 20px;
+  border-radius: 0 0 18px 18px;
+  box-sizing: border-box;
+  background-color: #fff;
+  position: absolute;
+  top: 44px;
+  left: 0;
+}
+
+header .search .autocompletes h3 {
+  font-size: 12px;
+  color: #6e6e6e;
+  margin-bottom: 12px;
+}
+
+header .search .autocompletes ul {
+}
+
+header .search .autocompletes ul li {
+}
+
+header .search .autocompletes ul a {
+  display: block;
+  margin: 0 -14px;
+  padding: 10px 0 10px 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+header .search .autocompletes ul a:hover {
+  background-color: #f5f5f5;
+  color: #0071e3;
+}
+
+header .searching ul.menu li {
+  display: none;
+}
+
+header.searching ul.menu > li {
+  display: none;
+}
+
+header.searching .search-wrap {
+  display: block;
 }
