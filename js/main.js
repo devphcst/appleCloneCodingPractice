@@ -47,10 +47,13 @@ function hideBasket() {
 // 검색
 
 const headerEl = document.querySelector('header');
+const headerMenuEls = [...headerEl.querySelectorAll('ul.menu > li')];
 const searchWrapEl = headerEl.querySelector('.search-wrap');
 const searchStarterEl = headerEl.querySelector('.search-starter');
 const searchCloserEl = searchWrapEl.querySelector('.search-closer');
 const shadowEl = searchWrapEl.querySelector('.shadow');
+const searchInputEl = searchWrapEl.querySelector('input');
+const searchDelaysEls = [...searchWrapEl.querySelectorAll('li')];
 
 // searchStarterEl.addEventListener('click', function () {
 //   showSearch();
@@ -68,8 +71,33 @@ shadowEl.addEventListener('click', function () {
 
 function showSearch() {
   headerEl.classList.add('searching');
+  // html 태그 찾기
+
+  document.documentElement.classList.add('fixed');
+
+  headerMenuEls.reverse().forEach(function (el, index) {
+    el.style.transitionDelay = (index * 0.4) / headerMenuEls.length + 's';
+  });
+
+  searchDelaysEls.forEach(function (el, index) {
+    el.style.transitionDelay = (index * 0.4) / searchDelaysEls.length + 's';
+  });
+  setTimeout(function () {
+    searchInputEl.focus();
+  }, 600);
 }
 
 function hideSearch() {
   headerEl.classList.remove('searching');
+  // html 태그 찾기
+  document.documentElement.classList.remove('fixed');
+
+  headerMenuEls.reverse().forEach(function (el, index) {
+    el.style.transitionDelay = (index * 0.4) / headerMenuEls.length + 's';
+  });
+  searchDelaysEls.reverse().forEach(function (el, index) {
+    el.style.transitionDelay = (index * 0.4) / searchDelaysEls.length + 's';
+  });
+  searchDelaysEls.reverse();
+  searchInputEl.value = '';
 }
